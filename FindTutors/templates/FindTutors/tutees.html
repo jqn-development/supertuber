@@ -1,0 +1,24 @@
+{% extends 'FindTutors/base.html' %}
+{% block content %}
+<h2>Tutees</h2>
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Tutee's Name</th>
+      <th>Tutee's Year</th>
+      <th>Tutee's Subjects</th>
+      <th>Request</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for tutee in tutees %}
+    <tr>
+      <td><a href="{{tutee.firstname}}/">{{ tutee.firstname }} {{tutee.lastname }}</a></td>
+      <td>{{ tutee.year }} </td>
+      <td>{{ tutee.subjects }} </td>
+      <td><a class="btn btn-primary" href="/../home/request/?recipient={{tutor}}" role="button">Send Request</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,16 @@
+language: python
+python:
+- '3.8'
+services:
+- postgresql
+install:
+- pip install -r requirements-travis.txt
+script:
+- python manage.py test
+deploy:
+  provider: heroku
+  api_key:
+    secure: q12qLw/QgW5WsX/z0ivq89lzW2NS9C63zjYNUmkjSCPSuxBLR12HsLSN+fbekC/QtYpgXbhVlujDvPaoyxuNV+rqNmF5zf/Gwg5NPTr4RQJ5N4cT8RWEP9o3062sfsVlcrL8FnoMQtTz15nA8ailf7yriUY0RxcQvhRMw4Y5425axLq6uQelxinf+JcpD44piIl8v0h8MvXJsEMSHquWwMHzhbTawq25v1LrojZ4nFibreXfv0YGBuaOauKf9Jl7C481Z7AeSpRfFTkEL1iMZS8uDdDWBacTraOwW5HoQroJGEOiR8301OUm7l2Ey2lA8bZv7kSxE+dP3t1tZaLmpJ5jiaRv9ZiFz/Seypzq/CGJc8kJAaxdFdbtDW+XAwYYCsk1oJjriBpxvHBfZo2O6tvDU8Tpd+WlzH/4fS9iLd3TtitZ8FCny/nOr1XuAhTkkPOl2iRSjiYQ+UG0pm53N7XvUrtS8EFr7SHllTwaSclSSq6cS+qM9vofC2fpUR36RSulpYDHtJK10lwbkshvHZDl3xVu99XHA/KJGD5GJiUtwBdyBfU5AjKhDCHwpA9VkUwS9HuPGMrGElhb74S3Nd/+2We1Xs4tpWA3jVYMbVqFH1GtjWlHo6fDjZ7LJe580MUTDp50OHSSPQ+nUzyXlCyB9fiKa1cb1tNH6xjgxGw=
+  app: project-102-supertuber
+  on:
+    repo: uva-cs3240-s20/project-102-supertuber

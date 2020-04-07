@@ -1,0 +1,10 @@
+{% extends 'FindTutors/base.html' %}
+{% block content %}
+<h2> Create a New Tutee Account </h2>
+<form method='post'>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit"> Register as Tutee! </button>
+</form>
+<br>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'FindTutors/base.html' %}
+{% block content %}
+<h1>
+  <p class="text-success">Tutor Request Successful!
+</h1>
+</p>
+{% if tutors %}
+<ul style='margin-left:40%'>
+  {% for tutor in tutors %}
+  <li>{{ tutor.name }}
+    {{ tutor.email }}
+    {{ tutor.phone_number }}
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p> No tutor is available </p>
+{% endif %}
+
+<img
+  src="https://learnenglishteens.britishcouncil.org/sites/teens/files/styles/article/public/rs7364_thinkstockphotos-515067268-low.jpg?itok=6PTAbSRX"
+  style='width:100%;' />
+{% endblock %}

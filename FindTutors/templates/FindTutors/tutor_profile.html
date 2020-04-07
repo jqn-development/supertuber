@@ -1,0 +1,44 @@
+{% extends 'FindTutors/base.html' %}
+{% block content %}
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-md-auto py-5">
+      <h1 class="display-4">{{profile.firstname}} {{ profile.lastname }} 's Profile</h1>
+      <div class="container-fluid bg-1 text-center py-4">
+        {% if profile.image %}
+        <img src="{{ profile.image.url }}" width="240">
+        {% endif %}
+      </div>
+
+      <div class="container-fluid bg-2 text-center">
+        <h3> Email </h3>
+        <p>{{profile.email }}</p>
+      </div>
+
+      <div class="container-fluid bg-3 text-center">
+        <h3>Phone Number </h3>
+        <p>{{profile.phone_number}}</p>
+      </div>
+
+      <div class="container-fluid bg-3 text-center">
+        <h3>Subjects </h3>
+        <p>{{profile.subjects}}</p>
+      </div>
+      <div class="container-fluid bg-3 text-center">
+        <h3>Years Of Experience </h3>
+        <p>{{profile.year}}</p>
+      </div>
+
+      <div class="container-fluid bg-3 text-left">
+        <h2>Reviews</h2>
+        <h5>About {{ profile.firstname }} {{ profile.lastname }}</h5>
+        <p>{{profile.bio}}</p>
+        {% for review in reviews %}
+        <p>{{review.reviews}}</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

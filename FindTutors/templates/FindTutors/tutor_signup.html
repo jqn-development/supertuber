@@ -1,0 +1,17 @@
+{% extends 'FindTutors/base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-auto py-5">
+            <h2>Create a New Tutor Account</h2>
+            <div class="form-group">
+                <form method="POST" class="post-form" enctype='multipart/form-data'>
+                    {% csrf_token %}{{ form.as_p }}
+                    <button type="submit">Register as a Tutor</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

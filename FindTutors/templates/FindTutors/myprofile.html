@@ -1,0 +1,18 @@
+{% extends 'FindTutors/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-md-auto py-5">
+      <img class="rounded-circle img-thumbnail mb-5 profile-image" src="{{ user.profile.image.url }}">
+      <h2 class="h2 text-center">{{ user.profile.year }}</h2>
+      <p class="h3 text-center text-secondary">{{ user.username }}</p>
+      <div class="col-md-auto text-center">
+        <form action="{% url 'FindTutors:edit_profile' %}">
+          <input class="btn btn-warning" type="submit" value="Edit" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

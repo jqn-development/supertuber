@@ -1,0 +1,32 @@
+{% extends 'FindTutors/base.html' %}
+{% block content %}
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-md-12 py-5">
+      <h2>Tutors</h2>
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Tutor's Name</th>
+            <th>Tutor's Year</th>
+            <th>Tutor's Subjects</th>
+            <th>Request</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for tutor in tutors %}
+          <tr>
+            <td><a href="{{tutor.id}}/">{{ tutor.firstname }} {{tutor.lastname }}</a></td>
+            <td>{{ tutor.year }} </td>
+            <td>{{ tutor.subjects }} </td>
+            <td><a class="btn btn-warning" href="/../home/request/?recipient={{tutor.email}}" role="button">Send
+                Request</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

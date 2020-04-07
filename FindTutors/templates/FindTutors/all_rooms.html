@@ -1,0 +1,18 @@
+{% extends 'FindTutors/base.html' %}
+{% block content %}
+{% for room in rooms %}
+<div class="column">
+  <div class="card rounded-edges">
+    <div class="card-content">
+      <p class="title is-4">{{room.name}}</p>
+      <div class="content">
+        <p>
+          {{room.description}}
+        </p>
+        <a href="{{room.slug}}" class="button">Join Room</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}

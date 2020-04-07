@@ -1,0 +1,9 @@
+{% extends 'FindTutors/base.html' %}
+{% block content %}
+<h2> Request </h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type='submit'> Send Request </button>
+</form>
+{% endblock %}

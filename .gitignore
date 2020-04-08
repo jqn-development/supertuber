@@ -118,4 +118,6 @@ db.sqlite3
 
 .vscode
 
+.env
+
 # End of https://www.gitignore.io/api/python

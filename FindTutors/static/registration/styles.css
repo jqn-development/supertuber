@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+html,
+body {
+  background-image: url('https://news.virginia.edu/sites/default/files/article_image/rotunda_dusk_ss_header_3-2_4.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  font-family: 'Numans', sans-serif;
+}
+
+.sign-in {
+  margin-top: 50%;
+}

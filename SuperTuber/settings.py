@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import dotenv
 
+dotenv.read_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -47,8 +49,10 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '335640839300-immovs65ecne6escplolu2ok89in75so.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'xNB_2n3dFQ1YjP-kDeX5zIbj'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ''
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ''
+
 AUTH_USER_MODEL = 'FindTutors.TUser'
 LOGIN_URL = '/auth/login/google-oauth2/'
 
@@ -142,10 +146,10 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 STATIC_URL = '/static/'
 
-TWILIO_ACCOUNT_SID = 'ACc0ac8277ee2c88478706627261124260'
-TWILIO_API_KEY = 'SK5c7c27b4c1a86f65109bb47f0b7e28be'
-TWILIO_API_SECRET = 'B8J05OKyiDfsquD1wjoYe1jZC6X0CChi'
-TWILIO_CHAT_SERVICE_SID = 'ISeadadf27f7bb456e8b6f6888c2715b87'
+TWILIO_ACCOUNT_SID = ''
+TWILIO_API_KEY = ''
+TWILIO_API_SECRET = ''
+TWILIO_CHAT_SERVICE_SID = ''
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (

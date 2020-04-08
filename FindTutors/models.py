@@ -5,6 +5,7 @@ from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin, UserManager
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+from PIL import Image
 
 
 class UserManager(BaseUserManager):
@@ -26,7 +27,6 @@ class UserManager(BaseUserManager):
 
 
 # We change following functions signature to allow "No password"
-
 
     def create_user(self, username, email, password=None):
         return self._create_user(username, email, password, False, False)

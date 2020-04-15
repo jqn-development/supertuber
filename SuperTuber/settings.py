@@ -54,6 +54,8 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv(
     'SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
 
+SOCIAL_AUTH_GOOGLE_EXTRA_DATA = ['first_name', 'last_name']
+
 AUTH_USER_MODEL = 'FindTutors.TUser'
 LOGIN_URL = '/auth/login/google-oauth2/'
 
@@ -156,7 +158,6 @@ TWILIO_CHAT_SERVICE_SID = ''
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'FindTutors/static/registration/'),
     os.path.join(BASE_DIR, 'FindTutors/static/FindTutors/'),
-    os.path.join(BASE_DIR, 'FindTutors/static/SignUp/'),
 )
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

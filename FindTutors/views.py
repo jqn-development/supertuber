@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 from django.contrib.auth import login, logout, authenticate
-from .models import Request, TUser, Reviews, Room
+from .models import Request, TUser, Reviews, Room, Profile
 from .forms import RequestForm, RegisterForm, ProfileUpdateForm, TutorRegistration, TutorUserSignUpForm, \
     ReviewRatingForm
 from django.views.generic import CreateView, ListView
@@ -24,11 +24,23 @@ class TutorRegister(CreateView):
     template_name = 'FindTutors/tutor_signup.html'  # correct form HTML
 
     def form_valid(self, form):
-
         user = form.save(commit=False)
         user.is_tutor = True
         user.save()
         return redirect('/home/tutors/')  # Go back to the table of tutors
+
+    def get_form_kwargs(self):
+        kwargs = super(TutorRegister, self).get_form_kwargs()
+        kwargs.update({'user': self.request.user})
+        return kwargs
+
+    # def get(self, request, *args, **kwargs):
+    #     self.object = None
+    #     current_user = request.user
+    #     entry = get_object_or_404(Profile, pk=current_user.id)
+    #     context_data = self.get_context_data()
+    #     context_data.update(entry=entry)
+    #     return self.render_to_response(context_data)
 
 
 class TuteeRegisterView(CreateView):
@@ -49,9 +61,7 @@ class TuteeRegisterView(CreateView):
 
 def Tutors(request):
     model = TUser
-    # the_tutors = []
     the_tutors = TUser.objects.filter(is_tutor=1)
-    # the_tutors = TUser.objects.all()
     return render(request, 'FindTutors/tutors.html', {'tutors': the_tutors})
 
 
@@ -101,7 +111,7 @@ def TutorRequest(request):
     model = TUser
     all_tutors = TUser.objects.filter(is_tutor=True)
     if request.user.is_authenticated:
-        print('pie')
+        print('user authenticated')
     return render(request, 'FindTutors/tutor_request.html', {'tutors': all_tutors})
 
 
@@ -112,8 +122,6 @@ class ProfileView(generic.TemplateView):
 @login_required
 def editprofile(request):
     if request.method == 'POST':
-        print("--- request ----")
-        print(request.user)
         p_form = ProfileUpdateForm(request.POST, request.FILES)
         p_form = ProfileUpdateForm(
             request.POST, request.FILES, instance=request.user.profile)

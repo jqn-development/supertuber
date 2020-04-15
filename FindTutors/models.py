@@ -48,7 +48,21 @@ class TUser(AbstractBaseUser, PermissionsMixin):
     is_tutee = models.BooleanField('student status', default=False)
     is_tutor = models.BooleanField('teacher status', default=False)
     year = models.IntegerField(blank=True, null=True)
-    subjects = models.CharField(max_length=500, default="")
+    SUBJECT_CHOICES = (
+        ('Computer Science', 'Computer Science'),
+        ('Biology', 'Biology'),
+        ('Chemistry', 'Chemistry'),
+        ('Physics', 'Physics'),
+        ('Math', 'Math'),
+        ('English', 'English'),
+        ('Algebra', 'Algebra'),
+        ('Calculus', 'Calculus'),
+        ('Geometry', 'Geometry'),
+        ('Language', 'Language'),
+        ('Reading', 'Reading'),
+        ('Music', 'Music'),
+    )
+    subjects = models.CharField(max_length=30, choices=SUBJECT_CHOICES)
     bio = models.TextField(default=' ')
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
@@ -66,8 +80,10 @@ class TUser(AbstractBaseUser, PermissionsMixin):
 # profile of tutee?
 class Profile(models.Model):
     user = models.OneToOneField(TUser, on_delete=models.CASCADE)
-    firstname = TUser.firstname
-    lastname = TUser.lastname
+    # firstname = TUser.firstname
+    # lastname = TUser.lastname
+    firstname = models.CharField(max_length=100, default=' ')
+    lastname = models.CharField(max_length=100, default=' ')
     image = models.ImageField(default='profile_pictures/default.jpg',
                               upload_to='profile_pictures')
 
@@ -146,7 +162,7 @@ class Request(models.Model):
         TUser, models.SET_NULL, related_name="TUser_sender", blank=True, null=True)
     recipient = models.ForeignKey(
         TUser, models.SET_NULL, related_name="TUser_recipient", blank=True, null=True)
-    subject = models.CharField(max_length=500, default="")
+    subject = models.CharField(max_length=500, default="",)
     description = models.CharField(max_length=500, default="")
     location = models.CharField(max_length=500, default="")
 

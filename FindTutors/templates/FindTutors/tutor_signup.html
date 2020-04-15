@@ -1,12 +1,18 @@
 {% extends 'FindTutors/base.html' %}
 {% block content %}
+{% load crispy_forms_tags %}
 <div class="container">
     <div class="row justify-content-md-center">
         <div class="col-md-auto py-5">
             <h2>Create a New Tutor Account</h2>
             <div class="form-group">
                 <form method="POST" class="post-form" enctype='multipart/form-data'>
-                    {% csrf_token %}{{ form.as_p }}
+                    {% csrf_token %}
+                    {{ form.firstname|as_crispy_field }}
+                    {{ form.lastname|as_crispy_field }}
+                    {{ form.email|as_crispy_field }}
+                    {{ form.phone_number|as_crispy_field }}
+                    {{ form.subjects|as_crispy_field }}
                     <button type="submit">Register as a Tutor</button>
                 </form>
             </div>
